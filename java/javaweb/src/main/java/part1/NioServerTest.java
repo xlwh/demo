@@ -56,7 +56,7 @@ public class NioServerTest {
 							if (n <=0){
 								break;
 							}
-							buffer.flip(); ///???
+							buffer.flip(); //重置pos位
 						}
 						System.out.println("read done");
 						it.remove();
