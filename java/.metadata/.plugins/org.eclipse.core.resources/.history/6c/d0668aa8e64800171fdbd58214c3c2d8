@@ -1,0 +1,43 @@
+package part1;
+
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.nio.ByteBuffer;
+import java.nio.channels.SelectionKey;
+import java.nio.channels.Selector;
+import java.nio.channels.ServerSocketChannel;
+import java.util.Iterator;
+
+public class NioTest {
+
+	
+	
+	@SuppressWarnings("unchecked")
+	public static void main(String[] args) {
+		//分配1024个座位
+		ByteBuffer buffer = ByteBuffer.allocate(1024);
+		//客车
+		ServerSocketChannel ssc = null;
+		//创建调度器
+		Selector selector = null;
+		try {
+			selector = Selector.open();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		try {
+			//创建运输车
+			ssc = ServerSocketChannel.open();
+			//开启端口监听
+			ssc.socket().bind(new InetSocketAddress(8080));
+			//注册调度器
+			ssc.register(selector, SelectionKey.OP_ACCEPT);
+			while(true) {
+				Iterator<SelectionKey> it = (Iterator<SelectionKey>)selector.selectedKeys();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+}

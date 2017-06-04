@@ -1,0 +1,20 @@
+package part1;
+
+import java.io.IOException;
+import java.nio.channels.ServerSocketChannel;
+
+public class NioTest {
+
+	
+	
+	public static void main(String[] args) {
+		ServerSocketChannel ssc = null;
+		try {
+			ssc = ServerSocketChannel.open();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}
